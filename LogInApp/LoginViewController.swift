@@ -12,10 +12,11 @@ class LoginViewController: UIViewController {
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     
+
     
-//    MARK: - public properties
-    let name = "Alexey"
-    let password = "Welcome"
+//    MARK: - private properties
+    private let name = "Alexey"
+    private let password = "Welcome"
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let welcomeVC = segue.destination as? WelcomeViewController else {return}
@@ -26,11 +27,11 @@ class LoginViewController: UIViewController {
     
 // MARK: - IB Actions
     @IBAction func logInPressed(_ sender: UIButton) {
-        guard let inputName = nameTextField.text, inputName != name, inputName.isEmpty,
-              let inputPassword = passwordTextField.text, inputPassword != password, inputPassword.isEmpty else {
-                  showAlert(title: "Oops", message: "Wrong name or password. Please try again.")
-                  return
-              }
+        if nameTextField.text == name, passwordTextField.text == password {
+           performSegue(withIdentifier: "WelcomeSegue", sender: UIButton())
+        } else {
+            showAlert(title: "Oops", message: "Wrong name or password. Please try again.")
+        }
     }
     
     

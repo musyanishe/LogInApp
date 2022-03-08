@@ -46,7 +46,7 @@
                                         </state>
                                         <connections>
                                             <action selector="logInPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SWT-jc-UmN"/>
-                                            <segue destination="HP0-Bx-y6b" kind="presentation" modalPresentationStyle="fullScreen" id="MR2-eQ-jVk"/>
+                                            <segue destination="HP0-Bx-y6b" kind="presentation" identifier="WelcomeSegue" modalPresentationStyle="fullScreen" id="MR2-eQ-jVk"/>
                                         </connections>
                                     </button>
                                 </subviews>
