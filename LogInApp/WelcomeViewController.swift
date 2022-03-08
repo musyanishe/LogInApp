@@ -10,9 +10,14 @@ import UIKit
 class WelcomeViewController: UIViewController {
     
     @IBOutlet weak var backgroundGradientView: UIView!
-
+    @IBOutlet var welcomeLabel: UILabel!
+    
+    var welcomeLB: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        welcomeLabel.text = welcomeLB
 
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = view.bounds
@@ -21,6 +26,5 @@ class WelcomeViewController: UIViewController {
     
         view.layer.insertSublayer(gradientLayer, at: 0)
     }
-    
 
 }
