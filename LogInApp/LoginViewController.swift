@@ -12,30 +12,29 @@ class LoginViewController: UIViewController {
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     
-    @IBOutlet var logInButton: UIButton!
     
 //    MARK: - public properties
     let name = "Alexey"
     let password = "Welcome"
-    
-//    MARK: - life cycle method
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let welcomeVC = segue.destination as? WelcomeViewController else {return}
         welcomeVC.welcomeLB = "Welcome, \(name)!"
     }
     
-//    @IBAction func unwind(for segue: UIStoryboardSegue) {
-//        guard segue.source is WelcomeViewController else {return}
-//        nameTextField.text = ""
-//        passwordTextField.text = ""
-//    }
+
     
 // MARK: - IB Actions
+    @IBAction func logInPressed(_ sender: UIButton) {
+        guard let inputName = nameTextField.text, inputName != name, inputName.isEmpty,
+              let inputPassword = passwordTextField.text, inputPassword != password, inputPassword.isEmpty else {
+                  showAlert(title: "Oops", message: "Wrong name or password. Please try again.")
+                  return
+              }
+    }
+    
+    
+    
     @IBAction func forgotNamePressed(_ sender: UIButton) {
                 showAlert(title: "😺", message: "Your name is \(name)")
             self.nameTextField.text = ""
@@ -43,6 +42,12 @@ class LoginViewController: UIViewController {
     
     @IBAction func forgotPasswordPressed(_ sender: UIButton) {
             showAlert(title: "😺", message: "Your password is \(password)")
+    }
+    
+    @IBAction func unwind(for segue: UIStoryboardSegue) {
+        guard segue.source is WelcomeViewController else {return}
+        nameTextField.text = ""
+        passwordTextField.text = ""
     }
     
 // MARK: - private method
