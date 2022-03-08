@@ -12,18 +12,15 @@ class LoginViewController: UIViewController {
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     
-
-    
 //    MARK: - private properties
     private let name = "Alexey"
     private let password = "Welcome"
     
+// MARK: - override method
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let welcomeVC = segue.destination as? WelcomeViewController else {return}
         welcomeVC.welcomeLB = "Welcome, \(name)!"
     }
-    
-
     
 // MARK: - IB Actions
     @IBAction func logInPressed(_ sender: UIButton) {
@@ -33,8 +30,6 @@ class LoginViewController: UIViewController {
             showAlert(title: "Oops", message: "Wrong name or password. Please try again.")
         }
     }
-    
-    
     
     @IBAction func forgotNamePressed(_ sender: UIButton) {
                 showAlert(title: "😺", message: "Your name is \(name)")
@@ -52,14 +47,13 @@ class LoginViewController: UIViewController {
     }
     
 // MARK: - private method
-                private func showAlert(title: String, message: String) {
-                    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-                    let okAction = UIAlertAction(title: "OK", style: .default) { _ in
-                        self.passwordTextField.text = ""
-                    }
-                    alert.addAction(okAction)
-                    present(alert, animated: true)
-                }
-
-
+    private func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            self.passwordTextField.text = ""
+        }
+        alert.addAction(okAction)
+        present(alert, animated: true)
+    }
+    
 }
