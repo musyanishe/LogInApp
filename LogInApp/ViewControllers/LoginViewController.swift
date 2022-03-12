@@ -12,33 +12,29 @@ class LoginViewController: UIViewController {
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     
-//    MARK: - private properties
-    private let name = "Alexey"
-    private let password = "Welcome"
+    let user = User(name: "Alexey", password: "Welcome")
     
 // MARK: - override method
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let welcomeVC = segue.destination as? WelcomeViewController else {return}
-        welcomeVC.welcomeLB = "Welcome, \(name)!"
+        welcomeVC.welcomeLB = user.name
     }
     
 // MARK: - IB Actions
-    @IBAction func logInPressed(_ sender: UIButton) {
-        if nameTextField.text == name, passwordTextField.text == password {
-           performSegue(withIdentifier: "WelcomeSegue", sender: UIButton())
-        } else {
+    @IBAction func logInPressed() {
+        guard nameTextField.text == user.name, passwordTextField.text == user.password else {
             showAlert(title: "Oops", message: "Wrong name or password. Please try again.")
+            return
         }
+        performSegue(withIdentifier: "WelcomeSegue", sender: nil)
     }
     
-    @IBAction func forgotNamePressed(_ sender: UIButton) {
-                showAlert(title: "😺", message: "Your name is \(name)")
-            self.nameTextField.text = ""
+    @IBAction func showAlertMessage(_ sender: UIButton) {
+        sender.tag == 0
+        ? showAlert(title: "😺", message: "Your name is \(user.name)")
+        : showAlert(title: "😺", message: "Your password is \(user.password)")
     }
     
-    @IBAction func forgotPasswordPressed(_ sender: UIButton) {
-            showAlert(title: "😺", message: "Your password is \(password)")
-    }
     
     @IBAction func unwind(for segue: UIStoryboardSegue) {
         guard segue.source is WelcomeViewController else {return}
