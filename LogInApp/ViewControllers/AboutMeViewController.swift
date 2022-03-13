@@ -12,8 +12,12 @@ class AboutMeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = user.person.name
     }
     
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let moreInfoVC = segue.destination as? MoreInfoViewController else { return }
+        moreInfoVC.user = user
+    }
 
 }

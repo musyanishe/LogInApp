@@ -34,10 +34,11 @@ class LoginViewController: UIViewController {
     
 // MARK: - IB Actions
     @IBAction func logInPressed() {
-        if userTextField.text != user.user, passwordTextField.text != user.password {
-            showAlert(title: "Oops", message: "Wrong name or password. Please try again.")
+        if userTextField.text != user.user || passwordTextField.text != user.password {
+            showAlert(title: "Oops", message: "Wrong name or password. Please try again.", textField: passwordTextField)
+            return
         }
-        return
+        performSegue(withIdentifier: "welcomeSegue", sender: nil)
     }
     
     @IBAction func showAlertMessage(_ sender: UIButton) {
@@ -52,6 +53,7 @@ class LoginViewController: UIViewController {
         userTextField.text = ""
         passwordTextField.text = ""
     }
+    
 }
 
     
