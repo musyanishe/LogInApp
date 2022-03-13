@@ -3,6 +3,7 @@
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -154,7 +155,16 @@
                             <constraint firstItem="FZb-Mt-oNf" firstAttribute="centerX" secondItem="MBE-2X-FTl" secondAttribute="centerX" id="v1k-qm-Ao9"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="dPA-yP-KZj"/>
+                    <tabBarItem key="tabBarItem" title="Home" id="dPA-yP-KZj">
+                        <imageReference key="image" image="house" catalog="system" renderingMode="hierarchical">
+                            <hierarchicalColors>
+                                <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </hierarchicalColors>
+                        </imageReference>
+                        <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
                     <navigationItem key="navigationItem" id="vmn-XU-zVC"/>
                     <connections>
                         <outlet property="backgroundGradientView" destination="MBE-2X-FTl" id="aer-7N-kE3"/>
@@ -177,12 +187,12 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4VQ-Jk-oCp">
                                 <rect key="frame" x="16" y="96" width="343" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="QlU-Ym-yDB"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                         <constraints>
                             <constraint firstItem="4VQ-Jk-oCp" firstAttribute="leading" secondItem="QlU-Ym-yDB" secondAttribute="leading" constant="16" id="NT7-g2-kXN"/>
                             <constraint firstItem="QlU-Ym-yDB" firstAttribute="trailing" secondItem="4VQ-Jk-oCp" secondAttribute="trailing" constant="16" id="Su1-lX-7SF"/>
@@ -191,10 +201,15 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="1Ti-iG-vOo">
-                        <barButtonItem key="rightBarButtonItem" title="More Info" id="dIQ-Ek-aET"/>
+                        <barButtonItem key="rightBarButtonItem" title="More Info" id="dIQ-Ek-aET">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <segue destination="fjM-Mn-3fm" kind="show" id="0QC-hr-B5G"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="fjM-Mn-3fm" kind="show" identifier="identifier" id="qhV-DK-HCB"/>
+                        <outlet property="backGroundGradientView" destination="heI-HH-OVK" id="mxN-MU-5b7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KvU-Ju-aIv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -214,7 +229,7 @@
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="HhK-MB-Hv2"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                         <constraints>
                             <constraint firstItem="NFF-4G-nEh" firstAttribute="leading" secondItem="HhK-MB-Hv2" secondAttribute="leading" constant="16" id="Hyy-Co-feh"/>
                             <constraint firstItem="HhK-MB-Hv2" firstAttribute="bottom" secondItem="NFF-4G-nEh" secondAttribute="bottom" id="QdK-F9-d1p"/>
@@ -222,8 +237,11 @@
                             <constraint firstItem="NFF-4G-nEh" firstAttribute="top" secondItem="HhK-MB-Hv2" secondAttribute="top" id="siH-zk-iUk"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="OcO-fi-OVK"/>
+                    <navigationItem key="navigationItem" id="OcO-fi-OVK">
+                        <barButtonItem key="backBarButtonItem" title="&lt; Back" id="LFF-Mj-AUm"/>
+                    </navigationItem>
                     <connections>
+                        <outlet property="backGroundGradientView" destination="IcR-dg-tVQ" id="kUS-R0-83J"/>
                         <outlet property="photoView" destination="NFF-4G-nEh" id="fqA-BZ-xxF"/>
                     </connections>
                 </viewController>
@@ -238,7 +256,9 @@
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ZG5-Wt-goX">
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="HP0-Bx-y6b" kind="relationship" relationship="viewControllers" id="l78-6S-KiE"/>
@@ -253,11 +273,26 @@
         <scene sceneID="FVi-GE-s7m">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="GvI-bF-txk" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Welcome" image="star" catalog="system" id="KXO-de-6XH"/>
+                    <tabBarItem key="tabBarItem" title="Welcome" id="KXO-de-6XH">
+                        <imageReference key="image" image="star" catalog="system" renderingMode="hierarchical">
+                            <hierarchicalColors>
+                                <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </hierarchicalColors>
+                        </imageReference>
+                        <color key="badgeColor" systemColor="secondarySystemBackgroundColor"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="Srf-9b-2Yg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -276,6 +311,12 @@
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
