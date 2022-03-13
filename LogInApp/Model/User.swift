@@ -23,7 +23,7 @@ struct User {
 struct Person {
     let name: String
     let image: String
-    
+
     static func getPerson() -> Person {
         Person(name: "Evgeniia Shevtsova", image: "photo")
     }
