@@ -12,12 +12,12 @@ class WelcomeViewController: UIViewController {
     @IBOutlet weak var backgroundGradientView: UIView!
     @IBOutlet var welcomeLabel: UILabel!
     
-    var welcomeLB = ""
+    var user: User!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        welcomeLabel.text = "Welcome, \(welcomeLB)"
+        welcomeLabel.text = "Welcome, \(user.person.name)"
 
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = view.bounds
